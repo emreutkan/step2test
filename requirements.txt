@@ -1,0 +1,7 @@
+uvicorn~=0.34.2
+fastapi~=0.115.12
+psycopg2-binary
+azure-keyvault-secrets
+azure-identity
+python-dotenv
+azure-core
