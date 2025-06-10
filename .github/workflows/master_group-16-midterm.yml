@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 env:
-  ACR_NAME: yourAcrName            # e.g. group16acr
+  ACR_NAME: group16finalacr            # e.g. group16acr
   IMAGE_NAME: group-16-midterm     # container repo in ACR
 
 jobs:
@@ -23,8 +23,9 @@ jobs:
       - name: Log in to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_200C44E8954049E5BCD12E1291E6046 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_89DB40F7662A48D8B1FF52BABFE4433C }}
+          client-id:       ${{ secrets.AZUREAPPSERVICE_CLIENTID_200C44E8954049E5BCD12E1291E6046 }}
+          client-secret:   ${{ secrets.AZUREAPPSERVICE_CLIENTSECRET_200C44E8954049E5BCD12E1291E6046 }}
+          tenant-id:       ${{ secrets.AZUREAPPSERVICE_TENANTID_89DB40F7662A48D8B1FF52BABFE4433C }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_C358C471823E49D8975B84F1E67C1836 }}
 
       - name: Login to ACR
@@ -57,8 +58,9 @@ jobs:
       - name: Log in to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_200C44E8954049E5BCD12E1291E6046 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_89DB40F7662A48D8B1FF52BABFE4433C }}
+          client-id:       ${{ secrets.AZUREAPPSERVICE_CLIENTID_200C44E8954049E5BCD12E1291E6046 }}
+          client-secret:   ${{ secrets.AZUREAPPSERVICE_CLIENTSECRET_200C44E8954049E5BCD12E1291E6046 }}
+          tenant-id:       ${{ secrets.AZUREAPPSERVICE_TENANTID_89DB40F7662A48D8B1FF52BABFE4433C }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_C358C471823E49D8975B84F1E67C1836 }}
 
       - name: Deploy container image to Web App
