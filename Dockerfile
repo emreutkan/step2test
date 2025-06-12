@@ -29,6 +29,6 @@ COPY init.sh .
 COPY app/ ./app/
 RUN chmod +x init.sh
 
-EXPOSE 22 8000
+EXPOSE 2222 8000
 
 CMD ["./init.sh"]
