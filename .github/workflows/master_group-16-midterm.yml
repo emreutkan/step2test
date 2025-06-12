@@ -35,8 +35,8 @@ jobs:
       # The image is tagged with the unique commit SHA for versioning.
       - name: 'Build and Push to ACR'
         run: |
-          docker build . -t group16finalacr.azurecr.io/group-16-midterm:${{ github.sha }}
-          docker push group16finalacr.azurecr.io/group-16-midterm:${{ github.sha }}
+          docker build . -t g16acr.azurecr.io/group-16-midterm:${{ github.sha }}
+          docker push g16acr.azurecr.io/group-16-midterm:${{ github.sha }}
 
       # Step 5: Deploy the newly pushed image from ACR to your Azure App Service.
       - name: 'Deploy from ACR to App Service'
