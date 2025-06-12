@@ -1,18 +1,13 @@
-# This workflow builds a Docker image, pushes it to Azure Container Registry (ACR),
-# and then deploys it to an Azure App Service.
-# It's triggered on any push to the repository.
-
 name: Build and Deploy to Azure App Service
 
 on: [push]
 
 jobs:
   build-and-deploy:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checks out your repository under $GITHUB_WORKSPACE, so your job can access it
+      # Step 1: Checks out your repository under $GITHUB_WORKSPACE, so the job can access it
       - name: 'Checkout master'
         uses: actions/checkout@v2
 
@@ -27,7 +22,7 @@ jobs:
       - name: 'Log in to ACR'
         uses: azure/docker-login@v1
         with:
-          login-server: g16acr.azurecr.io # Your ACR name
+          login-server: g16acr.azurecr.io # ACR name
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
@@ -42,7 +37,7 @@ jobs:
       - name: 'Deploy from ACR to App Service'
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'g16finalwebapp' # Your App Service name
+          app-name: 'g16finalwebapp' # App Service name
           images: 'g16acr.azurecr.io/group-16-midterm:${{ github.sha }}' # Full image name including the commit SHA tag
 
       # Step 6: Log out of Azure as a cleanup step.

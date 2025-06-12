@@ -1,7 +1,19 @@
+# /etc/ssh/sshd_config
+
+# Listen on App Service’s WebSSH port
 Port 2222
 ListenAddress 0.0.0.0
-LoginGraceTime 180
-X11Forwarding yes
+
+# Authentication
 PermitRootLogin yes
 PasswordAuthentication yes
+PubkeyAuthentication no
+
+# Subsystem for SFTP if you ever need it
 Subsystem       sftp    internal-sftp
+
+# Keep the defaults for everything else; e.g.:
+# UseDNS no
+# AllowAgentForwarding yes
+# AllowTcpForwarding yes
+# X11Forwarding yes
