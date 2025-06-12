@@ -27,7 +27,7 @@ jobs:
       - name: 'Log in to ACR'
         uses: azure/docker-login@v1
         with:
-          login-server: group16finalacr.azurecr.io # Your ACR name
+          login-server: g16acr.azurecr.io # Your ACR name
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
@@ -42,8 +42,8 @@ jobs:
       - name: 'Deploy from ACR to App Service'
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'group-16-midterm' # Your App Service name
-          images: 'group16finalacr.azurecr.io/group-16-midterm:${{ github.sha }}' # Full image name including the commit SHA tag
+          app-name: 'g16finalwebapp' # Your App Service name
+          images: 'g16acr.azurecr.io/group-16-midterm:${{ github.sha }}' # Full image name including the commit SHA tag
 
       # Step 6: Log out of Azure as a cleanup step.
       - name: 'Log out from Azure'
