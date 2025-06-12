@@ -13,11 +13,12 @@ RUN apt-get update \
 RUN echo 'root:Docker!' | chpasswd
 
 # Configure SSH daemon to listen on port 2222 and allow root/password auth
-RUN sed -i 's/#Port 22/Port 2222/' /etc/ssh/sshd_config \
-    && sed -i 's/Port 22/Port 2222/' /etc/ssh/sshd_config \
+# In your Dockerfile, replace the old RUN command with this one
+
+# Configure SSH daemon and other settings
+RUN sed -i 's/^#?Port .*/Port 2222/' /etc/ssh/sshd_config \
     && sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config \
     && sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
-
 # Create App Service directories (optional)
 RUN mkdir -p /home /home/site/wwwroot
 
